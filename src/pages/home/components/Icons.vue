@@ -1,16 +1,16 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide
-        v-for="(page,index) of pages"
-        :key="index">
+        v-for="(page,key) of pages"
+        :key="key">
         <div class="icon"
              v-for="item of page"
              :key="item.id">
           <div class="icon-img">
             <img class="icon-img-content" :src="item.imgUrl">
           </div>
-          <p class="icon-desc">{{item.desc}}</p>
+          <p class="icon-desc">{{item.title}}</p>
         </div>
       </swiper-slide>
 
@@ -22,45 +22,14 @@
 <script>
 export default {
   name: 'HomeIcons',
-  data () {
+  props: {
+    iconList: Array
+  },
+  data: function () {
     return {
-      iconList: [{
-        id: '001',
-        imgUrl: 'https://picbed.qunarzz.com/1316dc82d1ce6259686d5a68880e5a9d.png',
-        desc: '景点门票'
-      }, {
-        id: '002',
-        imgUrl: 'https://s.qunarzz.com/homenode/images/touchheader/flight.png',
-        desc: '自由行'
-      }, {
-        id: '003',
-        imgUrl: 'https://s.qunarzz.com/homenode/images/touchheader/package.png',
-        desc: '度假向导'
-      }, {
-        id: '004',
-        imgUrl: 'https://s.qunarzz.com/homenode/images/touchheader/hotel.png',
-        desc: '随心住'
-      }, {
-        id: '005',
-        imgUrl: 'https://picbed.qunarzz.com/1316dc82d1ce6259686d5a68880e5a9d.png',
-        desc: '景点门票'
-      }, {
-        id: '006',
-        imgUrl: 'https://s.qunarzz.com/homenode/images/touchheader/flight.png',
-        desc: '自由行'
-      }, {
-        id: '007',
-        imgUrl: 'https://s.qunarzz.com/homenode/images/touchheader/package.png',
-        desc: '度假向导'
-      }, {
-        id: '008',
-        imgUrl: 'https://s.qunarzz.com/homenode/images/touchheader/hotel.png',
-        desc: '随心住'
-      }, {
-        id: '009',
-        imgUrl: 'https://picbed.qunarzz.com/25e3b9f17a21a6e0113c57a23ffccde4.png',
-        desc: '周边短途'
-      }]
+      swiperOption: {
+        autoplay: false
+      }
     }
   },
   computed: {
@@ -74,6 +43,7 @@ export default {
         }
         pages[page].push(item)
       })
+      // console.log(pages)
       return pages
     }
   }

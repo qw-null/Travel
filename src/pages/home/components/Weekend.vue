@@ -3,7 +3,7 @@
     <div class="title">周末去哪儿</div>
     <ul>
       <li class="item border-bottom"
-          v-for="item of recommendList"
+          v-for="item of weekendList"
           :key="item.id"
       >
         <div class="item-img-wrapper">
@@ -21,25 +21,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data () {
-    return {
-      recommendList: [{
-        id: '001',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_vcimg/f03f5ac90ae59d0d9c6332a2bfd9782e.jpeg',
-        title: '故宫',
-        desc: '世界五大宫之首，穿越与您近在咫尺'
-      }, {
-        id: '002',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_vcimg/f03f5ac90ae59d0d9c6332a2bfd9782e.jpeg',
-        title: '故宫',
-        desc: '世界五大宫之首，穿越与您近在咫尺'
-      }, {
-        id: '003',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_vcimg/f03f5ac90ae59d0d9c6332a2bfd9782e.jpeg',
-        title: '故宫',
-        desc: '世界五大宫之首，穿越与您近在咫尺'
-      }]
-    }
+  props: {
+    weekendList: Array
   }
 }
 </script>
@@ -47,7 +30,6 @@ export default {
 <style lang="stylus" scoped>
 @import "~styles/mixins.styl"
 .title{
-  margin-top: .2rem;
   line-height: .8rem;
   background: #eee;
   text-indent: .2rem;
@@ -55,7 +37,7 @@ export default {
 .item-img-wrapper{
   overflow: hidden;
   height: 0;
-  padding-bottom: 33.9%;
+  padding-bottom: 37.09%;
 
 }
 .item-img{
