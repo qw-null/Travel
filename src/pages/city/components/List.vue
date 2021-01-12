@@ -56,14 +56,18 @@ export default {
     // 解决better-scroll无法使用问题
     // 原因：better-scroll加载快于数据加载，导致无法获取到数据长度
     // 解决办法：延长better-scroll加载时间
-    setTimeout(() => {
-      this.$nextTick(() => {
-        this.scroll = new BScroll(this.$refs.wrapper, {
-          click: true
-        })
-        // console.log(this.scroll)
-      })
-    }, 400)
+    this.scroll = new BScroll(this.$refs.wrapper)
+    // setTimeout(() => {
+    //   this.$nextTick(() => {
+    //     this.scroll = new BScroll(this.$refs.wrapper, {
+    //       click: true
+    //     })
+    //     // console.log(this.scroll)
+    //   })
+    // }, 400)
+  },
+  updated () {
+    this.scroll.refresh()
   },
   watch: {
     letter () {
