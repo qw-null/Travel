@@ -23,7 +23,11 @@
         </div>
       </div>
 
-      <div class="area" v-for="(item,key) of cities" :key="key">
+      <div class="area"
+           v-for="(item,key) of cities"
+           :key="key"
+           :ref="key"
+      >
         <div class="title border-topbottom" >{{ key }}</div>
         <div class="item-list">
           <div class="item border-bottom"
@@ -45,10 +49,32 @@ export default {
   name: 'CityList',
   props: {
     hotCities: Array,
-    cities: Object
+    cities: Object,
+    letter: String
   },
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    // 解决better-scroll无法使用问题
+    // 原因：better-scroll加载快于数据加载，导致无法获取到数据长度
+    // 解决办法：延长better-scroll加载时间
+    setTimeout(() => {
+      this.$nextTick(() => {
+        this.scroll = new BScroll(this.$refs.wrapper, {
+          click: true
+        })
+        // console.log(this.scroll)
+      })
+    }, 400)
+  },
+  watch: {
+    letter () {
+      console.log(this.letter)
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]
+        // console.log(element)
+        this.scroll.scrollToElement(element)
+      }
+    }
+
   }
 
 }
