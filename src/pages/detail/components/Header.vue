@@ -25,9 +25,6 @@
 <script>
 export default {
   name: 'DetailHeader',
-  components: {
-
-  },
   data () {
     return {
       showAbs: true,
@@ -80,6 +77,7 @@ export default {
   font-size .4rem;
 }
 .header-fixed{
+  z-index 2;
   position: fixed;
   left 0;
   right 0;
