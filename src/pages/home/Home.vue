@@ -61,7 +61,7 @@ export default {
         this.swiperList = data.swiperList
         this.iconList = data.iconList
         this.weekendList = data.weekendList
-        this.recommendList = data.hotList
+        this.recommendList = data.recommendList
       }
       // console.log(res.data.iconList)
     }

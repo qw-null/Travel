@@ -72,10 +72,11 @@ export default {
     // 解决better-scroll无法使用问题
     // 原因：better-scroll加载快于数据加载，导致无法获取到数据长度
     // 解决办法：延长better-scroll加载时间
-    this.scroll = new BScroll(this.$refs.wrapper)
+    // this.scroll = new BScroll(this.$refs.wrapper)
     // setTimeout(() => {
     //   this.$nextTick(() => {
-    //     this.scroll = new BScroll(this.$refs.wrapper, {
+    this.scroll = new BScroll(this.$refs.wrapper)
+    // , {
     //       click: true
     //     })
     //     // console.log(this.scroll)
@@ -83,6 +84,13 @@ export default {
     // }, 400)
   },
   updated () {
+    this.scroll.refresh()
+  },
+
+  // activated()：在vue对象存活的情况下，
+  // 进入当前存在activated()函数的页面时，
+  // 一进入页面就触发；可用于初始化页面数据等
+  activated () {
     this.scroll.refresh()
   },
   watch: {
